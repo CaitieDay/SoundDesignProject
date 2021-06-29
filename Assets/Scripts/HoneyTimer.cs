@@ -42,7 +42,6 @@ public class HoneyTimer : MonoBehaviour
 
         if (timeRemaining == 0)
         {
-            //the empty jar is child 0 and the full jar is child 1
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
         }
@@ -60,5 +59,16 @@ public class HoneyTimer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    //VARS
+
+
+    public void ChangeJar()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(false);
+        timerRunning = true;
+        timeRemaining = 10;
     }
 }
