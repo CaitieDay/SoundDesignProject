@@ -29,6 +29,9 @@ public class FPSMovement : MonoBehaviour
 
     private float m_finalSpeed = 0f; // final speed after walking and running calculations are completed
 
+    [SerializeField]
+    private AudioSource footSteps;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -53,6 +56,11 @@ public class FPSMovement : MonoBehaviour
         if (Input.GetKey(m_forward) || Input.GetKey(m_back) || Input.GetKey(m_left) || Input.GetKey(m_right)) // check input for the keys defined in VARS
         {
             move = transform.right * x + transform.forward * z; // calculate the move vector (direction)
+            footSteps.UnPause();
+        }
+        else
+        {
+            footSteps.Pause();
         }
 
         MovePlayer(move); // Move the player player based on the move vector

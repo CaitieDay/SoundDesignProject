@@ -13,7 +13,9 @@ public class HoneyCollect : MonoBehaviour
 
     //DATA
     public Text dataTextJars;
-    public int dataAmountJars = 0; 
+    public int dataAmountJars = 0;
+    [SerializeField]
+    private AudioSource honeyCollect;
     
     
     // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class HoneyCollect : MonoBehaviour
                     dataAmountJars++;
                     dataTextJars.text = dataAmountJars.ToString();
                     rayHit.collider.GetComponentInParent<HoneyTimer>().ChangeJar();
+                    honeyCollect.Play();
                  }
             }
         }
